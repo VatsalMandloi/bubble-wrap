@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bubble Wrap</title>
     <link rel="stylesheet" href="main.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 </head>
 <body>
 
@@ -22,8 +22,8 @@
 let container = ""
 let text = ""
        
-           for(let j=0; j<w; j++){
-              text+="<div class='bubble' id='bubble' onclick='clicked(event)'></div> "
+           for(let j=0; j<300; j++){
+              text+="<div class='bubble' id='bubble' onclick='clicked(event)' onmousedown='party.confetti(this)'></div> "
            }
         container+=text
         text =""
