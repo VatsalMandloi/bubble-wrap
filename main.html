@@ -21,10 +21,25 @@
 
 let container = ""
 let text = ""
-       
-           for(let j=0; j<300; j++){
-              text+="<div class='bubble' id='bubble' onclick='clicked(event)' onmousedown='party.confetti(this)'></div> "
+var incre = 7
+var max = incre;
+var min= 0;
+
+       var random = Math.floor(Math.random()*max)
+      
+       min=max
+       max+=incre
+           for(let j=0; j<w; j++){
+                if(j===random){
+                        text+="<div class='bubble' id='bubble' onclick='clicked(event)' onmousedown='party.confetti(this)'></div> "
+                        random = Math.floor(Math.random()*(max-min+1))+min;
+                        min=max;
+                        max+=incre
            }
+           else{
+            text+="<div class='bubble' id='bubble' onclick='clicked(event)' ></div> "
+           }
+        }
         container+=text
         text =""
       
