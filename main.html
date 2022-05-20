@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bubble Wrap</title>
     <link rel="stylesheet" href="main.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 </head>
 <body>
 
     <div id="container" class="main">
         <div class="bubble" id="bubble" ></div>
    </div> 
+
    <script >
        var w = window.innerWidth
        var h = window.innerHeight
@@ -20,17 +21,32 @@
 
 let container = ""
 let text = ""
-       
+var incre = 7
+var max = incre;
+var min= 0;
+
+       var random = Math.floor(Math.random()*max)
+      
+       min=max
+       max+=incre
            for(let j=0; j<w; j++){
-              text+="<div class='bubble' id='bubble' onclick='clicked(event)'></div> "
+                if(j===random){
+                        text+="<div class='bubble' id='bubble' onclick='clicked(event)' onmousedown='party.confetti(this)'></div> "
+                        random = Math.floor(Math.random()*(max-min+1))+min;
+                        min=max;
+                        max+=incre
            }
+           else{
+            text+="<div class='bubble' id='bubble' onclick='clicked(event)' ></div> "
+           }
+        }
         container+=text
         text =""
       
 function clicked(event){
     const e =event.target;
     e.setAttribute("style","box-shadow:inset 5px -5px 10px #808080, inset -5px 5px 10px #ffffff")
-    setTimeout(function(){ e.setAttribute("style","box-shadow:5px -5px 10px #808080, -5px 5px 10px #ffffff")},5000);
+    setTimeout(function(){ e.setAttribute("style","box-shadow:5px -5px 10px #808080, -5px 5px 10px #ffffff")},10000);
 }
  document.getElementById("container").innerHTML = container
 
