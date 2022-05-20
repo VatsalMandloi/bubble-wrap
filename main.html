@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Wrap</title>
+    <link rel="stylesheet" href="main.css">
+    
+</head>
+<body>
+
+    <div id="container" class="main">
+        <div class="bubble" id="bubble" ></div>
+   </div> 
+   <script >
+       var w = window.innerWidth
+       var h = window.innerHeight
+
+
+let container = ""
+let text = ""
+       
+           for(let j=0; j<w; j++){
+              text+="<div class='bubble' id='bubble' onclick='clicked(event)'></div> "
+           }
+        container+=text
+        text =""
+      
+function clicked(event){
+    const e =event.target;
+    e.setAttribute("style","box-shadow:inset 5px -5px 10px #808080, inset -5px 5px 10px #ffffff")
+    setTimeout(function(){ e.setAttribute("style","box-shadow:5px -5px 10px #808080, -5px 5px 10px #ffffff")},5000);
+}
+ document.getElementById("container").innerHTML = container
+
+ 
+
+   </script>
+</body>
+</html>
